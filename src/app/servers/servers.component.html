@@ -31,3 +31,15 @@
 
 <p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
 <app-server *ngFor="let server of servers"></app-server>
+
+<button
+  class="btn btn-primary"
+  (click)="addClick()">Display details
+</button>
+<p *ngIf="toggleParagraph">Server was created, server name is {{serverName}}</p>
+
+<p *ngFor="let click of buttonClicks"
+   [ngStyle]="{backgroundColor: blue}"
+   [ngClass]="{online: getServerStatus() === 'online'}"
+  >{{click}}</p>
+

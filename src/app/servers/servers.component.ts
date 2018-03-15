@@ -18,7 +18,8 @@ export class ServersComponent implements OnInit {
   isUserNameEmpty = false;
   serverCreated =false;
   servers = ['Testserver', 'Testserver 2']
-
+  toggleParagraph: boolean = false;
+  buttonClicks = [];
 
   constructor() {
     setTimeout(() => {
@@ -46,5 +47,13 @@ export class ServersComponent implements OnInit {
   keyUpEventHandler(){
     this.isUserNameEmpty = true;
   }
+  addClick(){
+    this.toggleParagraph = !this.toggleParagraph;
 
+    let add = 1;
+    if(this.buttonClicks.length > 0) {
+      add =this.buttonClicks[this.buttonClicks.length-1] + 1;
+    }
+    this.buttonClicks.push(add)
+  }
 }
