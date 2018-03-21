@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +6,40 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverElements = [];
-  newServerName = '';
-  newServerContent = '';
 
-  onAddServer() {
+  serverElements = [{type: 'server', name: 'Testserver', content: 'Just a test!'}];
+  oddNumbers: number[] = [];
+  evenNumbers: number[] = [];
+
+  onServerAdded(serverData: { serverName: string, serverContent: string }) {
     this.serverElements.push({
       type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
+      name: serverData.serverName,
+      content: serverData.serverContent
     });
   }
 
-  onAddBlueprint() {
+  onBlueprintAdded(blueprintData: { serverName: string, serverContent: string }) {
     this.serverElements.push({
       type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
+      name: blueprintData.serverName,
+      content: blueprintData.serverContent
     });
+  }
+
+  onChangeFirst() {
+    this.serverElements[0].name = 'Changed';
+  }
+
+  onDestroyFirst() {
+    this.serverElements.splice(0, 1);
+  }
+
+  onIntervalFired(firedNumber) {
+    if (firedNumber % 2 == 0) {
+      this.evenNumbers.push(firedNumber);
+    } else {
+      this.oddNumbers.push(firedNumber);
+    }
   }
 }
