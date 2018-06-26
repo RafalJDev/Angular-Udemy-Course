@@ -1,0 +1,18 @@
+<div id="board">
+  <table border="1">
+
+    <tr *ngFor="let row of rowsCollection">
+      <app-cell *ngFor="let cell of cellsCollection"
+                [id]="row+cell"
+                [ships]="ships"
+                [isDisableChanges]="isDisableChanges"
+                (onCellClicked)="clickCell($event)"
+                (onCellMouseOver)="mouseOverCell($event)"
+                (onCellMouseOut)="mouseOutCell($event)"
+                [isContainShip]="isContainShip(row+cell)"
+                [isContainShipSimulation]="isContainShipSimulation(row+cell)">
+      </app-cell>
+    </tr>
+
+  </table>
+</div>

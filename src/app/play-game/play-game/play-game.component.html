@@ -1,0 +1,69 @@
+<app-game-code></app-game-code>
+
+<h3 [hidden]="isGameOver" class="player-turn">
+  <span> התור של </span>
+  {{currentPlayer.name}}
+</h3>
+<h2 [hidden]="!isGameOver" class="winner">
+  <span> ניצחון של </span>
+  {{currentPlayer.name}}
+  <span> !!! </span>
+</h2>
+
+<div [hidden]="!isGameOver">
+  <a class="btn btn-success" routerLink="/set-players" routerLinkActive="active">משחק חדש</a>
+</div>
+
+<!--player 2-->
+<div class="col-lg-6">
+
+  <!--player 2-->
+  <app-game-board
+    [isMyTurn]="!isTurnOfFirstPlayer"
+    [isGameOver]="isGameOver"
+    [isDisableChanges]="isGameOver || isTurnOfFirstPlayer"
+    [player]="player2"
+    [otherPlayer]="player1"
+    (onCellClicked)="clickCell($event)"
+    (onGameOver)="onGameOver()"></app-game-board>
+</div>
+
+
+<!--player 1-->
+
+<div class="col-lg-6">
+  <!--player 1-->
+  <app-game-board
+    [isMyTurn]="isTurnOfFirstPlayer"
+    [isGameOver]="isGameOver"
+    [isDisableChanges]="isGameOver || !isTurnOfFirstPlayer"
+    [player]="player1"
+    [otherPlayer]="player2"
+    (onCellClicked)="clickCell($event)"
+    (onGameOver)="onGameOver()"></app-game-board>
+</div>
+
+
+<div class="hide-real">
+  <hr/>
+
+  <div class="col-lg-6">
+    <app-board
+      isDisableChanges="true"
+      [ships]="player1.ships"
+      [cellsOfShips]="player1.cellsOfShips"
+      cellsOfShipsSimulation="cellsOfShipsSimulationEmptyArray">
+
+    </app-board>
+  </div>
+
+  <div class="col-lg-6">
+    <app-board
+      isDisableChanges="true"
+      [ships]="player2.ships"
+      [cellsOfShips]="player2.cellsOfShips"
+      cellsOfShipsSimulation="cellsOfShipsSimulationEmptyArray">
+
+    </app-board>
+  </div>
+</div>

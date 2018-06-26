@@ -1,0 +1,38 @@
+<h2>
+  התור של - {{player.name}}
+</h2>
+<h3>
+  בחירת מיקומי הצוללות
+</h3>
+
+<app-game-code></app-game-code>
+
+<div class="col-lg-4"></div>
+
+<div class="col-lg-4">
+  <app-board
+    [ships]="ships"
+    [cellsOfShips]="cellsOfShips"
+    [cellsOfShipsSimulation]="cellsOfShipsSimulation"
+    [isDisableChanges]="isFinishedChoosing"
+    (onCellClicked)="clickCell($event)"
+    (onCellMouseOver)="mouseOverCell($event)"
+    (onCellMouseOut)="mouseOutCell($event)">
+  </app-board>
+</div>
+
+<div class="col-lg-4" [hidden]="isFinishedChoosing">
+  <button id="switchDirectionButton" (click)="switchDirection()" class="btn btn-info">החלף כיוון</button>
+
+  <app-potential-ship
+    [size]="currentShipNumberOfCells"
+    [detectChangeInParent]="currentShipNumberOfCells"
+    [isVertical]="isVertical"></app-potential-ship>
+
+  <span class="text-danger">{{message}}</span>
+</div>
+
+<div class="col-lg-4" [hidden]="!isFinishedChoosing">
+  <button (click)="continueToNextStep()" class="btn btn-success">המשך לשלב הבא</button>
+  <span class="text-danger">{{message}}</span>
+</div>

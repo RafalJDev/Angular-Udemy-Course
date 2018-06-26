@@ -1,0 +1,15 @@
+h2 {
+  margin-top: 50px;
+}
+
+.bg-danger {
+  max-width: 300px;
+}
+
+input[type=text] {
+  max-width: 300px;
+}
+
+.margin-20 {
+  margin-top: 20px;
+}

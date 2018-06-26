@@ -1,34 +1,72 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import {AppComponent} from './app.component';
+import {CellComponent} from './cell/cell.component';
+import {BoardComponent} from './board/board.component';
+
+import {appRoutingProviders, routing} from './app.routing';
+import {PageNotFoundComponent} from './page-not-found.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {GameService} from './shared/game.service';
+import {DemoService} from './shared/demo.service';
+import {NotEqualValidator} from './shared/not-equal-validator.directive';
+import {ChooseLocationsComponent} from './choose-board/choose-locations/choose-locations.component';
+import {DemoBoardComponent} from './demo/demo-board/demo-board.component';
+import {PotentialShipComponent} from './choose-board/potential-ship/potential-ship.component';
+import {PotentialCellComponent} from './choose-board/potential-cell/potential-cell.component';
+import {SetPlayersComponent} from './set-players/set-players.component';
+import {DemoPlayerComponent} from './demo/demo-player/demo-player.component';
+import {PlayGameComponent} from './play-game/play-game/play-game.component';
+import {StartGameComponent} from './play-game/start-game/start-game.component';
+import {GameBoardComponent} from './play-game/game-board/game-board.component';
+import {DemoGameComponent} from './demo/demo-game/demo-game.component';
+import {GameCellComponent} from './play-game/game-cell/game-cell.component';
+import {GameCodeComponent} from './game-code/game-code.component';
+import {BoardService} from './shared/board.service';
+import {TestComponent} from './tests/test/test.component';
+
+// import { TestComponent } from './tests/test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent
+    CellComponent,
+    BoardComponent,
+    PageNotFoundComponent,
+    DashboardComponent,
+    NotEqualValidator,
+    ChooseLocationsComponent,
+    DemoBoardComponent,
+    PotentialShipComponent,
+    PotentialCellComponent,
+    SetPlayersComponent,
+    DemoPlayerComponent,
+    PlayGameComponent,
+    StartGameComponent,
+    GameBoardComponent,
+    DemoGameComponent,
+    GameCellComponent,
+    GameCodeComponent,
+    TestComponent,
+    // TestComponent
   ],
   imports: [
     BrowserModule,
+    routing,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders,
+    GameService,
+    DemoService,
+    BoardService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

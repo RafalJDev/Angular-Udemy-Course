@@ -1,0 +1,20 @@
+<div>
+  <p>
+    Demo board
+  </p>
+
+  <div id="board">
+    <table border="1">
+
+      <tr *ngFor="let row of rowsCollection">
+        <app-cell *ngFor="let cell of cellsCollection"
+                  [id]="row+cell"
+                  [ships]="ships"
+                  [isContainShip]="isContainShip(row+cell)">
+        </app-cell>
+      </tr>
+
+    </table>
+  </div>
+
+</div>

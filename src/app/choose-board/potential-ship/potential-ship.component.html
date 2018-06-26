@@ -1,0 +1,23 @@
+<div id="potential-ship-set">
+
+  <table border="1" [hidden]="isVertical">
+
+    <tr>
+      <td *ngFor="let cell of cellsCollection">
+        <app-potential-cell></app-potential-cell>
+      </td>
+    </tr>
+
+  </table>
+
+  <table border="1" [hidden]="!isVertical">
+
+    <tr *ngFor="let cell of cellsCollection">
+      <td>
+        <app-potential-cell></app-potential-cell>
+      </td>
+    </tr>
+
+  </table>
+
+</div>

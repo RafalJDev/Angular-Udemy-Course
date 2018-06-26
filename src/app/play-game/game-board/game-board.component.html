@@ -1,0 +1,16 @@
+<div id="board">
+  <h3>{{player.name}}</h3>
+  <h5>(<span>צריך למצוא את הצוללות של </span>{{otherPlayer.name}})</h5>
+
+  <table border="1" [ngClass]="getBoardClass()">
+    <tr *ngFor="let row of rowsCollection">
+      <app-game-cell *ngFor="let cell of cellsCollection"
+                     [cellInfo]="getCellInfo(row+cell)"
+                     [isDisableChanges]="isDisableChanges"
+                     [isGameOver]="isGameOver"
+                     (onCellClicked)="clickCell($event)">
+
+      </app-game-cell>
+    </tr>
+  </table>
+</div>
